@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>财务工作台 · 流水记账 / PDF 合成 / 文件管理</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg class="ico-sprite" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ico-ledger" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#8b7cf7"/><circle cx="29" cy="41.5" r="2.6" fill="#8b7cf7"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#8b7cf7"/><circle cx="42.5" cy="30" r="2.6" fill="#8b7cf7"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#8b7cf7" stroke="#8b7cf7" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="19" cy="21" r="2.4" fill="#ff9ec4" opacity=".85"/><circle cx="29" cy="21" r="2.4" fill="#ff9ec4" opacity=".85"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ico-accounts" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#ff7eb3"/><circle cx="29" cy="41.5" r="2.6" fill="#ff7eb3"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#ff7eb3"/><circle cx="42.5" cy="30" r="2.6" fill="#ff7eb3"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#ff7eb3" stroke="#ff7eb3" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="18.5" cy="21" r="2.7" fill="#ff5fa2" opacity=".9"/><circle cx="29.5" cy="21" r="2.7" fill="#ff5fa2" opacity=".9"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ico-parties" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#2ecf97"/><circle cx="29" cy="41.5" r="2.6" fill="#2ecf97"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#2ecf97"/><circle cx="42.5" cy="30" r="2.6" fill="#2ecf97"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#2ecf97" stroke="#2ecf97" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="19" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/><circle cx="29" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ico-projects" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#ffc24b"/><circle cx="29" cy="41.5" r="2.6" fill="#ffc24b"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#ffc24b"/><circle cx="42.5" cy="30" r="2.6" fill="#ffc24b"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#ffc24b" stroke="#ffc24b" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="19" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/><circle cx="29" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ico-pdf" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#5aa9ff"/><circle cx="29" cy="41.5" r="2.6" fill="#5aa9ff"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#5aa9ff"/><circle cx="42.5" cy="30" r="2.6" fill="#5aa9ff"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#5aa9ff" stroke="#5aa9ff" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="19" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/><circle cx="29" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ico-files" viewBox="0 0 48 48">
+      <circle cx="19" cy="41.5" r="2.6" fill="#ff8a5c"/><circle cx="29" cy="41.5" r="2.6" fill="#ff8a5c"/>
+      <circle cx="5.5" cy="30" r="2.6" fill="#ff8a5c"/><circle cx="42.5" cy="30" r="2.6" fill="#ff8a5c"/>
+      <polygon points="24,5 28.1,16.3 38.2,16.8 30.7,24.2 34,35.8 24,29 14,35.8 17.3,24.2 7.8,16.8 19.9,16.3" fill="#ff8a5c" stroke="#ff8a5c" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="19" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/><circle cx="29" cy="21" r="2.4" fill="#ff9ec4" opacity=".8"/>
+      <circle cx="20.5" cy="18" r="2.1" fill="#2e2a44"/><circle cx="27.5" cy="18" r="2.1" fill="#2e2a44"/>
+      <path d="M20.5 23 q3.5 3.2 7 0" stroke="#2e2a44" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="topbar">
+  <div class="brand">📒 财务工作台</div>
+  <div class="company-switcher">
+    <span class="store-badge" title="数据保存在本机浏览器（IndexedDB），不上传服务器">💾 本地存储</span>
+    <select id="companySelect" title="切换公司"></select>
+    <button type="button" class="btn" id="addCompanyBtn">＋ 新公司</button>
+    <button type="button" class="btn" id="manageCompanyBtn">管理</button>
+    <button type="button" class="theme-toggle" id="themeToggle" title="切换亮色 / 暗色主题">🌙</button>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidenav">
+    <button type="button" data-view="ledger" class="active"><svg class="nav-ico"><use href="#ico-ledger"/></svg>流水记账</button>
+    <button type="button" data-view="accounts"><svg class="nav-ico"><use href="#ico-accounts"/></svg>账户</button>
+    <button type="button" data-view="parties"><svg class="nav-ico"><use href="#ico-parties"/></svg>供应商客户</button>
+    <button type="button" data-view="projects"><svg class="nav-ico"><use href="#ico-projects"/></svg>项目</button>
+    <button type="button" data-view="pdf"><svg class="nav-ico"><use href="#ico-pdf"/></svg>PDF 合成</button>
+    <button type="button" data-view="files"><svg class="nav-ico"><use href="#ico-files"/></svg>文件库</button>
+    <div class="sidenav-foot">照片拖入 → 自动合成 PDF<br>账户 · 供应商客户 · 项目 · 票据，一站管理</div>
+  </nav>
+  <main id="main"></main>
+</div>
+
+<div id="dropOverlay" class="drop-overlay hidden">
+  <div class="drop-overlay-inner">
+    <div class="drop-hint">松开鼠标，选择文件处理方式</div>
+    <div class="drop-zones">
+      <div class="drop-zone" data-target="pdf">
+        <div class="dz-icon">📄</div>
+        <div class="dz-title">合成 PDF</div>
+        <div class="dz-sub">照片 / PDF → 合并为一个 PDF</div>
+      </div>
+      <div class="drop-zone" data-target="files">
+        <div class="dz-icon">🗂️</div>
+        <div class="dz-title">存入文件库</div>
+        <div class="dz-sub">任意格式 · 在线预览 / 下载</div>
+      </div>
+      <div class="drop-zone" data-target="txn">
+        <div class="dz-icon">🧾</div>
+        <div class="dz-title">记为流水单据</div>
+        <div class="dz-sub">作为票据上传，关联流水</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script src="vendor/pdf-lib.min.js"></script>
+<script src="app.js"></script>
+<script>
+  (function () {
+    var KEY = 'fw_theme';
+    var btn = document.getElementById('themeToggle');
+    function apply(theme) {
+      if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+      if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+    var saved = localStorage.getItem(KEY);
+    apply(saved === 'dark' ? 'dark' : 'light');
+    if (btn) btn.addEventListener('click', function () {
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var next = dark ? 'light' : 'dark';
+      apply(next);
+      localStorage.setItem(KEY, next);
+    });
+  })();
+</script>
+</body>
+</html>
