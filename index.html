@@ -65,47 +65,48 @@
   </defs>
 </svg>
 <header class="topbar">
-  <div class="brand">📒 财务工作台</div>
+  <div class="brand" data-zh="📒 财务工作台" data-en="📒 Finance Workbench">📒 财务工作台</div>
   <div class="company-switcher">
-    <span class="store-badge" title="数据保存在本机浏览器（IndexedDB），不上传服务器">💾 本地存储</span>
+    <span class="store-badge" title="数据保存在本机浏览器（IndexedDB），不上传服务器" data-zh="💾 本地存储" data-en="💾 Local">💾 本地存储</span>
     <select id="companySelect" title="切换公司"></select>
-    <button type="button" class="btn" id="addCompanyBtn">＋ 新公司</button>
-    <button type="button" class="btn" id="manageCompanyBtn">管理</button>
+    <button type="button" class="btn" id="addCompanyBtn" data-zh="＋ 新公司" data-en="＋ New">＋ 新公司</button>
+    <button type="button" class="btn" id="manageCompanyBtn" data-zh="管理" data-en="Manage">管理</button>
+    <button type="button" class="lang-toggle" id="langToggle" title="切换语言 / Switch language">中</button>
     <button type="button" class="theme-toggle" id="themeToggle" title="切换亮色 / 暗色主题">🌙</button>
   </div>
 </header>
 
 <div class="layout">
   <nav class="sidenav">
-    <button type="button" data-view="ledger" class="active"><svg class="nav-ico"><use href="#ico-ledger"/></svg>流水记账</button>
-    <button type="button" data-view="accounts"><svg class="nav-ico"><use href="#ico-accounts"/></svg>账户</button>
-    <button type="button" data-view="parties"><svg class="nav-ico"><use href="#ico-parties"/></svg>供应商客户</button>
-    <button type="button" data-view="projects"><svg class="nav-ico"><use href="#ico-projects"/></svg>项目</button>
-    <button type="button" data-view="pdf"><svg class="nav-ico"><use href="#ico-pdf"/></svg>PDF 合成</button>
-    <button type="button" data-view="files"><svg class="nav-ico"><use href="#ico-files"/></svg>文件库</button>
-    <div class="sidenav-foot">照片拖入 → 自动合成 PDF<br>账户 · 供应商客户 · 项目 · 票据，一站管理</div>
+    <button type="button" data-view="ledger" class="active"><svg class="nav-ico"><use href="#ico-ledger"/></svg><span class="nav-label" data-zh="流水记账" data-en="Ledger">流水记账</span></button>
+    <button type="button" data-view="accounts"><svg class="nav-ico"><use href="#ico-accounts"/></svg><span class="nav-label" data-zh="账户" data-en="Accounts">账户</span></button>
+    <button type="button" data-view="parties"><svg class="nav-ico"><use href="#ico-parties"/></svg><span class="nav-label" data-zh="供应商客户" data-en="Suppliers &amp; Customers">供应商客户</span></button>
+    <button type="button" data-view="projects"><svg class="nav-ico"><use href="#ico-projects"/></svg><span class="nav-label" data-zh="项目" data-en="Projects">项目</span></button>
+    <button type="button" data-view="pdf"><svg class="nav-ico"><use href="#ico-pdf"/></svg><span class="nav-label" data-zh="PDF 合成" data-en="PDF Merge">PDF 合成</span></button>
+    <button type="button" data-view="files"><svg class="nav-ico"><use href="#ico-files"/></svg><span class="nav-label" data-zh="文件库" data-en="File Library">文件库</span></button>
+    <div class="sidenav-foot" data-html-zh="照片拖入 → 自动合成 PDF<br>账户 · 供应商客户 · 项目 · 票据，一站管理" data-html-en="Drag photos in → auto-merge to PDF<br>Accounts · Suppliers · Projects · Receipts, all in one">照片拖入 → 自动合成 PDF<br>账户 · 供应商客户 · 项目 · 票据，一站管理</div>
   </nav>
   <main id="main"></main>
 </div>
 
 <div id="dropOverlay" class="drop-overlay hidden">
   <div class="drop-overlay-inner">
-    <div class="drop-hint">松开鼠标，选择文件处理方式</div>
+    <div class="drop-hint" data-zh="松开鼠标，选择文件处理方式" data-en="Release to choose how to handle the files">松开鼠标，选择文件处理方式</div>
     <div class="drop-zones">
       <div class="drop-zone" data-target="pdf">
         <div class="dz-icon">📄</div>
-        <div class="dz-title">合成 PDF</div>
-        <div class="dz-sub">照片 / PDF → 合并为一个 PDF</div>
+        <div class="dz-title" data-zh="合成 PDF" data-en="Merge PDF">合成 PDF</div>
+        <div class="dz-sub" data-zh="照片 / PDF → 合并为一个 PDF" data-en="Photos / PDF → one merged PDF">照片 / PDF → 合并为一个 PDF</div>
       </div>
       <div class="drop-zone" data-target="files">
         <div class="dz-icon">🗂️</div>
-        <div class="dz-title">存入文件库</div>
-        <div class="dz-sub">任意格式 · 在线预览 / 下载</div>
+        <div class="dz-title" data-zh="存入文件库" data-en="Save to library">存入文件库</div>
+        <div class="dz-sub" data-zh="任意格式 · 在线预览 / 下载" data-en="Any format · preview / download">任意格式 · 在线预览 / 下载</div>
       </div>
       <div class="drop-zone" data-target="txn">
         <div class="dz-icon">🧾</div>
-        <div class="dz-title">记为流水单据</div>
-        <div class="dz-sub">作为票据上传，关联流水</div>
+        <div class="dz-title" data-zh="记为流水单据" data-en="Attach to ledger">记为流水单据</div>
+        <div class="dz-sub" data-zh="作为票据上传，关联流水" data-en="Upload as receipt, link to a transaction">作为票据上传，关联流水</div>
       </div>
     </div>
   </div>
@@ -125,13 +126,13 @@
       else document.documentElement.removeAttribute('data-theme');
       if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
-    var saved = localStorage.getItem(KEY);
+    var saved = null; try { saved = localStorage.getItem(KEY); } catch (e) {}
     apply(saved === 'dark' ? 'dark' : 'light');
     if (btn) btn.addEventListener('click', function () {
       var dark = document.documentElement.getAttribute('data-theme') === 'dark';
       var next = dark ? 'light' : 'dark';
       apply(next);
-      localStorage.setItem(KEY, next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
     });
   })();
 </script>
